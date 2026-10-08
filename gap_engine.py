@@ -48,5 +48,4 @@ def cluster_gaps(gap_queries):
             clusters.append({"queries": [gq]})
 
     clusters.sort(key=lambda c: len(c["queries"]), reverse=True)
-    
     return clusters

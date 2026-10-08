@@ -10,6 +10,7 @@ Run (with main.py AND sync_watcher.py both already running):
 
 import json
 import os
+import time
 import requests
 import streamlit as st
 from datetime import datetime, timezone
@@ -110,23 +111,31 @@ if prompt:
     with st.chat_message("assistant"):
         with st.spinner("Thinking... (CPU-only, can take a bit)"):
             try:
+                start = time.perf_counter()
                 resp = requests.post(
                     f"{API_URL}/generate_rag",
                     json={"prompt": prompt},
-                    timeout=180,
+                    timeout=300,
                 )
+                total_ms = int((time.perf_counter() - start) * 1000)
                 resp.raise_for_status()
                 data = resp.json()
 
                 answer = data["response"]
                 badge = BADGES.get(data.get("answer_source"), "")
 
+                # Total round trip, plus model-only time when an LLM was involved
+                timing = f"⏱ {total_ms:,} ms total"
+                gen_ns = data.get("generation_time_ns")
+                if gen_ns:
+                    timing += f" ({gen_ns / 1e6:,.0f} ms model)"
+                badge_line = f"{badge} · {timing}" if badge else timing
+
                 st.write(answer)
-                if badge:
-                    st.caption(badge)
+                st.caption(badge_line)
 
                 st.session_state.messages.append(
-                    {"role": "assistant", "content": answer, "badge": badge}
+                    {"role": "assistant", "content": answer, "badge": badge_line}
                 )
 
             except requests.RequestException as e:
