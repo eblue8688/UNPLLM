@@ -1,0 +1,9 @@
+# One question per line. Blank lines and lines starting with # are ignored.
+# Aim for 15-20. Mix: topics your original documents/notes cover, topics the
+# sync engine has fetched (e.g. the iPhone, MacBook, photosynthesis ones),
+# topics it has NOT fetched, and a few hard or edge cases.
+What is UNPLLM?
+What is the Turing machine?
+What is anoxygenic photosynthesis?
+What is the latest iPhone model?
+which macbook was the latest from apple

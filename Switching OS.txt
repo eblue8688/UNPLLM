@@ -1,0 +1,177 @@
+========================================================
+SWITCHING OS - Running UNPLLM on Windows or macOS
+========================================================
+This project was built and tested on Ubuntu. None of the
+Python code changes across operating systems - main.py,
+sync_watcher.py, app.py, etc. all run as-is everywhere.
+What changes is a handful of SETUP and TERMINAL commands.
+This file lists every one of them, for both Windows and
+macOS. Keep using unpllm_startup_guide.txt for the day to
+day workflow once these substitutions are made.
+
+
+========================================================
+WINDOWS
+========================================================
+
+1. INSTALL OLLAMA
+------------------------------
+Either:
+    Download the installer from https://ollama.com/download
+    and run it.
+Or, in PowerShell:
+    winget install Ollama.Ollama
+
+After installing, Ollama runs automatically in the
+background (system tray icon) - no systemd equivalent to
+start manually.
+
+Verify it's working (PowerShell or Command Prompt):
+    ollama --version
+    curl http://127.0.0.1:11434/api/tags
+
+If "ollama" isn't recognized right after installing, close
+and reopen your terminal (PATH changes need a fresh session).
+
+
+2. PYTHON SETUP
+------------------------------
+Windows Python is usually invoked as "python", not "python3":
+
+    python -m venv unpllm-env
+    unpllm-env\Scripts\activate
+    pip install -r requirements.txt
+
+Note the backslash and no "source" - this is the Windows
+equivalent of "source unpllm-env/bin/activate".
+
+If pip install for torch times out or is very slow, same
+fix as documented for Ubuntu - install the CPU-only build
+first (identical command, works the same on Windows):
+    pip install torch --index-url https://download.pytorch.org/whl/cpu
+    pip install -r requirements.txt
+
+
+3. RUNNING THE THREE PROCESSES
+------------------------------
+Same three terminals, same commands, just "python" instead
+of "python3":
+
+    Terminal 1:  python main.py
+    Terminal 2:  python sync_watcher.py
+    Terminal 3:  streamlit run app.py
+
+Everything else - the URLs, the /docs page, the Streamlit
+tab - behaves identically.
+
+
+4. COMMANDS THAT DON'T EXIST ON WINDOWS
+------------------------------------------------
+  Ubuntu command          Windows equivalent
+  ----------------        --------------------------------
+  systemctl status ollama  Check the system tray icon, or
+                           just try curling the API - if it
+                           fails, open Ollama from the Start
+                           menu.
+
+  lspci | grep nvidia      Check Device Manager > Display
+                           adapters, or in PowerShell:
+                             wmic path win32_VideoController get name
+
+  free -h                  Task Manager > Performance tab, or:
+                             systeminfo | findstr "Total Physical Memory"
+
+  sqlite3 (CLI)            Not installed by default. Either
+                           download it from sqlite.org, or
+                           just use Python instead:
+                             python -c "import sqlite3; c = sqlite3.connect('unpllm_queries.db'); print(c.execute('SELECT COUNT(*) FROM query_log').fetchone())"
+
+  ollama ps                Works identically on Windows -
+                           no substitution needed.
+
+
+========================================================
+macOS
+========================================================
+
+1. INSTALL OLLAMA
+------------------------------
+Either:
+    brew install ollama
+Or download the .dmg from https://ollama.com/download and
+drag it to Applications (macOS 14 Sonoma or later required).
+
+After installing, Ollama runs as a menu bar app in the
+background - no systemd equivalent needed.
+
+If you have Apple Silicon (M1/M2/M3/M4): Ollama automatically
+uses Metal GPU acceleration with zero configuration - you'll
+likely see noticeably faster tokens/sec than this project's
+CPU-only Ubuntu benchmarks, since Apple Silicon's unified
+memory architecture is one of the best CPU-inference setups
+available. Worth re-running benchmark.py on Mac hardware and
+noting the difference in your report if you switch.
+
+Verify:
+    ollama --version
+    curl http://127.0.0.1:11434/api/tags
+
+
+2. PYTHON SETUP
+------------------------------
+macOS is Unix-based like Ubuntu, so this is identical:
+
+    python3 -m venv unpllm-env
+    source unpllm-env/bin/activate
+    pip install -r requirements.txt
+
+No CPU-only torch workaround needed here in the same way -
+Apple Silicon uses its own optimized build automatically.
+
+
+3. RUNNING THE THREE PROCESSES
+------------------------------
+Identical to Ubuntu:
+
+    Terminal 1:  python3 main.py
+    Terminal 2:  python3 sync_watcher.py
+    Terminal 3:  streamlit run app.py
+
+
+4. COMMANDS THAT DIFFER ON macOS
+------------------------------------------------
+  Ubuntu command          macOS equivalent
+  ----------------        --------------------------------
+  systemctl status ollama  Check the menu bar icon, or just
+                           try curling the API.
+
+  lspci | grep nvidia      Not applicable - Apple Silicon has
+                           no discrete GPU to check for; Metal
+                           acceleration is automatic. On an
+                           older Intel Mac with a discrete
+                           AMD GPU, check: About This Mac >
+                           System Report > Graphics/Displays.
+
+  free -h                  sysctl hw.memsize
+                           (prints bytes; divide by 1073741824
+                           for GB), or Activity Monitor > Memory.
+
+  sqlite3 (CLI)            Already pre-installed on macOS -
+                           all sqlite3 commands from the main
+                           guide work exactly as written.
+
+  ollama ps                Works identically - no substitution
+                           needed.
+
+
+========================================================
+WHAT NEVER CHANGES, REGARDLESS OF OS
+========================================================
+- Every .py file in this project (main.py, app.py,
+  sync_watcher.py, rag_utils.py, query_logger.py,
+  gap_engine.py, analyze_gaps.py, ingest.py, benchmark.py)
+- requirements.txt
+- All URLs (http://127.0.0.1:8001, /docs, etc.)
+- The Streamlit UI's behavior and appearance
+- ollama pull / ollama run / ollama ps commands
+- pip commands (aside from python vs python3)

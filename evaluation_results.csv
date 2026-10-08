@@ -1,0 +1,56 @@
+question,condition,answer,latency_sec,system_ram_used_mb,chunks_retrieved,top_distance,correctness_score_1to5,unsupported_claims_y_n,notes
+What is UNPLLM?,A_no_rag,"UNPLLM stands for United Nations Programme on Least Developed Countries (LDCs). The LDC category was established in 1971 by the international community to identify and assist countries that exhibit extremely low levels of socio-economic development.
+
+The programme aims at achieving sustainable economic growth, social inclusion, poverty reduction through a holistic approach focused mainly on three main areas: building productive capacities; developing human resources (education); improving infrastructure. It works closely with member states under their national plans for LDC graduation and helps them build the necessary conditions to reach this goal of graduating from being an ""Least Developed Country"".
+
+UNPLLM operates as part of larger efforts by various UN agencies such as UNICEF, UNESCO, WHO etc., which are committed towards uplifting these marginalized communities.",18.09,10190,0,,,,
+What is UNPLLM?,B_rag_baseline,"UNPLLM stands for Unplugged LLM (Large Language Model), which refers to an offline-first language model assistant developed in this final year B.Tech project by focusing solely on running entirely local and using only the available internet resources opportunistically. The core innovation of UNPLLM involves its usage-driven adaptive synchronization engine, enabling it not just as a static knowledge base but one that evolves based upon user interactions while maintaining an offline mode for most operations.
+
+The system utilizes Phi-4-mini with 3.8 billion parameters quantized at Q4_K_M level and integrates ChromaDB vector store alongside MiniLM embeddings to function effectively on CPU-only hardware, eliminating the need for discrete GPU resources or constant internet connectivity during its operation. This innovative approach makes UNPLLM a versatile assistant capable of self-improvement through learned user interactions while ensuring data privacy by minimizing online activity once offline mode is initiated.
+
+The context provided emphasizes that unlike traditional cloud-based AI assistants which depend heavily on continuous and stable Internet connections,",24.37,10111,1,0.9263,,,
+What is UNPLLM?,C_rag_full,"UNPLLM (Unplugged LLM) is an offline-first local language model assistant developed as part of the final year B.Tech project at a university. It runs entirely on local hardware using a quantized small language model served through Ollama, with adaptive synchronization for knowledge updates when internet access becomes available. The system uses Phi-4-mini (3.8B parameters), MiniLM-L6-v2 embeddings, and ChromaDB as its vector store components.
+
+It is designed to operate without the need for constant cloud AI assistant connectivity or a discrete GPU dependency on CPU-only hardware.",114.85,10477,4,0.9263,,,
+What is the Turing machine?,A_no_rag,"A Turing Machine (TM) is an abstract computational model introduced by Alan Turing in 1936 that defines what it means for a function to be computable or decidable on purpose of clarifying fundamental questions concerning those concepts.
+
+The basic components and operation rules are as follows:
+
+- **Tape:** The TM has one infinite tape divided into cells, which can hold symbols. Each symbol is either blank (usually denoted by 'B') representing an empty cell.
+  
+- **Head(s):** One or more heads read/write the content of each individual Turing machine's tapes and write new data onto them.
+
+- **State Register:** It contains a finite number of states, including at least one starting state. The TM starts in this initial (or ""reset"") position on its tape with all cells blank except for where it initially lies.
+  
+- **Transition Function/Program or Table:** A transition function defines what the machine does based upon two things: 1) What is currently under",21.29,10709,0,,,,
+What is the Turing machine?,B_rag_baseline,"The UNPLLM Project Notes provided does not contain information about what a Turing machine is; it instead focuses exclusively on an offline-first LLM assistant project called UNPLLM. A Turing machine, in contrast to your question's context and answer requirement as well as my usual response capability limitations (running fully off-line without internet access), can be described independently: 
+
+A Turing Machine is a theoretical computational model introduced by Alan Turing in 1936 that defines an abstract mathematical concept of computation. It consists of a strip of tape divided into cells, each capable of holding one symbol from some finite alphabet; the machine has read/write heads and states (which dictate what actions to take based on current circumstances) allowing it to change symbols or move along this infinite tape in both directions according to certain rules that constitute its program. It's used as a standard model for defining computability: something is considered Turing-computable if there exists an algorithm—effectively, the instructions of which would be run",33.94,10712,1,1.5432,,,
+What is the Turing machine?,C_rag_full,"The term ""Turing machine"" refers to an abstract computational model invented by Alan Turing in 1936-37 as part of his efforts on what would become known as computability theory. A Turing machine consists of:
+
+1. An infinite, discrete tape divided into consecutive cells.
+2. Each cell holds a symbol from some finite alphabet (e.g., binary digits {0, 1}, or any arbitrary symbols).
+3. One single read-write head that can move left and right along the tape to perform operations based on rules defined by an algorithm.
+
+The machine starts with its reading/ writing head positioned at one of these cells initially containing a symbol from some alphabet (the input). Based upon this initial configuration, it performs actions according to certain predetermined instructions. These may involve changing symbols in different states and moving right or left along the tape depending on what is being read by the scanner.
+
+A Turing machine can perform any computation that would be carried out via an algorithmic process given sufficient",116.55,10708,4,1.5432,,,
+What is anoxygenic photosynthesis?,A_no_rag,"Anoxygenic photosynthesis refers to the process of converting light energy into chemical stored energy by certain bacteria and archaea that produce oxygen-free compounds like sulfur or hydrogen instead of water as in traditional O2-producing plants during CO₂ fixation (Calvin cycle). Unlike cyanobacteria, purple and green non-sulfur bacteria use this type of photosynthesis. They are often found around hydrothermal vents on the ocean floor where they derive energy from chemicals rather than sunlight directly due to their ability to utilize substances like hydrogen sulfide or methane as electron donors in place of water molecules which results in no oxygen being released during the process.",14.47,10947,0,,,,
+What is anoxygenic photosynthesis?,B_rag_baseline,"Anoxygenic photosynthesis refers to light-dependent processes carried out by certain bacteria (such as purple sulfur bacteria) where water molecules are not split, thus oxygen is not produced. Instead of producing O2 and H+, these organisms typically use substances like hydrogen sulfide or organic compounds instead of water for the photolytic reactions that release electrons needed in photosynthesis.
+
+(Note: The context provided regarding UNPLLM does not pertain to anoxygenic photosynthesis as it relates more closely to technological developments rather than biological processes.)",24.69,10971,1,2.0191,,,
+What is anoxygenic photosynthesis?,C_rag_full,"Anoxygenic photosynthesis is a special form of photosynthesis used by some bacteria that differs from oxygenic photosynthesis in plants and cyanobacteria mainly through the reductant it uses (e.g., hydrogen sulfide instead of water) as well as its byproduct generation. Unlike their counterparts, which predominantly use chlorophyll to harness light energy for carbon dioxide fixation via both Calvin cycle and reverse TCA cycle processes along with an oxygen-evolving complex in type I reaction centers; bacteria practicing this form utilize bacteriochlorophyll (BChl). These phototrophs can also engage the Calvin cycle. Furthermore, they differ structurally by employing either of two types of electron transport chains: Type I for organisms like green sulfur bacteria and Chloracidobacterium with P800/P840 as their reaction center chloropigments; or type II found in FAPs (Chloroflexia) and purple non-sulfur bacteria using a distinct bacteriochlorophyll pair known as P870. Their",34.23,10698,4,0.4819,,,
+What is the latest iPhone model?,A_no_rag,"As of October 2023, there isn't an official release or announcement for any new models beyond what Apple released in September to coincide with Apple's annual event (typically held on Sept. 7). The last confirmed update was at that time and included:
+
+- **iPhone SE (4th generation)**
+- **iPhone 13 mini/13/Mini/L/nZ/s** series
+- **iPhone 14 mini/iPhone 14/Mini/L/nZ/s** series
+
+For the most accurate information, you should check Apple’s official website or trusted tech news sources like TechCrunch.",12.82,11010,0,,,,
+What is the latest iPhone model?,B_rag_baseline,"As of my last update in October 2023, there isn't any official information provided regarding your previous questions that would help me identify the current or most recent Apple product. I recommend checking Apple's website directly for updates and announcements related to their products such as smartphones.
+
+
+The context you've supplied is about UNPLLM Project Notes on an offline-first LLM assistant but does not pertain specifically to iPhone models, so it doesn't assist in answering your question either.
+
+For the latest information regarding Apple smartphone releases or any other specific technology queries outside my current knowledge cutoff date (October 2023), please refer directly from reliable sources like Apple's official announcements.",14.34,10993,1,1.6813,,,
+What is the latest iPhone model?,C_rag_full,"The context provided does not give us information about a ""latest"" or newest iPhone as it only details up until Apple Event in September 2026. As of my knowledge cutoff date, there are no new models released after that point within this given scenario; therefore I cannot provide an answer for the latest model beyond what has been described here with Apple's announcement occurring on September 9, 2026.",11.64,10836,4,0.9246,,,
